@@ -2,7 +2,7 @@
 
 Discord bot
 
-# Permissions required
+## Permissions required
 
 * Change Nickname
 * Manage Nickname
