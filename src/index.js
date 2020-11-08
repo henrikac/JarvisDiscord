@@ -27,6 +27,8 @@ client.once('ready', () => {
     } else {
         console.log('I am online but I could not find the room');
     }
+
+    client.user.setActivity('everyone', { type: 'WATCHING' });
 });
 
 client.on('message', message => {
