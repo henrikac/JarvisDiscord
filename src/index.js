@@ -23,7 +23,7 @@ client.once('ready', () => {
     const channel = client.channels.cache.find(channel => channel.name === 'general');
 
     if (channel) {
-        // channel.send('Hiya, I come in peace! :robot:');
+        channel.send('Hiya, I come in peace! :robot:');
     } else {
         console.log('I am online but I could not find the room');
     }
