@@ -2,16 +2,15 @@ import { MessageEmbed } from 'discord.js';
 
 export default {
     name: 'help',
-    description: '',
+    description: 'Get a list of available commands',
 
     run: (client, message, args) => {
 
-        // TODO: .addField dynamicly
         const help = new MessageEmbed()
-            .setTitle('Available commands:')
-            .addField('.help', 'displays a list of my available commands')
-            .addField('.ping', 'ping pong')
-            .addField('.king', 'hail the king');
+            .setTitle('Available commands:');
+
+        for (const command of client.commands)
+            help.addField(`.${command[1].name}`, `${command[1].description}`);
 
         message.channel.send(help);
     }

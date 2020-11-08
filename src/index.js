@@ -8,23 +8,22 @@ dotenv.config();
 const client = new Client();
 client.commands = new Collection();
 
-client.once('ready', () => {
-    readdir(path.join(__dirname, 'commands'), (error, files) => {
-        if (error) throw error;
+readdir(path.join(__dirname, 'commands'), (error, files) => {
+    if (error) throw error;
 
-        files.forEach(async file => {
-            if (file.endsWith('.js')) {
-                const command = await import(`${path.join(__dirname, 'commands', file)}`);
-                client.commands.set(command.default.name, command.default);
-            }
-        });
+    files.forEach(async file => {
+        if (file.endsWith('.js')) {
+            const command = await import(`${path.join(__dirname, 'commands', file)}`);
+            client.commands.set(command.default.name, command.default);
+        }
     });
+});
 
-
+client.once('ready', () => {
     const channel = client.channels.cache.find(channel => channel.name === 'general');
 
     if (channel) {
-        channel.send('Hiya, I come in peace! :robot:');
+        // channel.send('Hiya, I come in peace! :robot:');
     } else {
         console.log('I am online but I could not find the room');
     }
