@@ -4,7 +4,7 @@ Discord bot
 
 ## How to add a new command
 
-- Add a new file in the `commands` folder
+Add a new file in the `commands` folder
 
 ```javascript
 export default {
