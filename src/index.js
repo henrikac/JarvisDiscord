@@ -19,19 +19,19 @@ readdir(path.join(__dirname, 'commands'), (error, files) => {
     });
 });
 
-client.once('ready', () => {
+client.once('ready', async () => {
     const channel = client.channels.cache.find(channel => channel.name === 'general');
 
     if (channel) {
-        channel.send('Hiya, I come in peace! :robot:');
+        await channel.send('Hiya, I come in peace! :robot:');
     } else {
         console.log('I am online but I could not find the room');
     }
 
-    client.user.setActivity('everyone', { type: 'WATCHING' });
+    await client.user.setActivity('everyone', { type: 'WATCHING' });
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     const prefix = '.';
 
     if (message.author.bot) return;
@@ -43,9 +43,9 @@ client.on('message', message => {
             .split(/\s+/);
 
         try {
-            client.commands.get(cmd).run(client, message, args);
+            await client.commands.get(cmd).run(client, message, args);
         } catch (error) {
-            message.channel.send('type **.help** to get a list of my available commands');
+            await message.channel.send('type **.help** to get a list of my available commands');
         }
     }
 });

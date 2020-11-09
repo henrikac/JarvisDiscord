@@ -3,6 +3,6 @@ export default {
     description: 'ping pong',
 
     run: async (client, message, args) => {
-        message.channel.send('pong :ping_pong:');
+        await message.channel.send('pong :ping_pong:');
     }
 }

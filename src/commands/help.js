@@ -4,7 +4,7 @@ export default {
     name: 'help',
     description: 'Get a list of available commands',
 
-    run: (client, message, args) => {
+    run: async (client, message, args) => {
 
         const help = new MessageEmbed()
             .setTitle('Available commands:');
@@ -12,6 +12,6 @@ export default {
         for (const command of client.commands)
             help.addField(`.${command[1].name}`, `${command[1].description}`);
 
-        message.channel.send(help);
+        await message.channel.send(help);
     }
 }

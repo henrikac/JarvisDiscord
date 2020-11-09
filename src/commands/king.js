@@ -5,6 +5,6 @@ export default {
     description: 'hail the king',
 
     run: async (client, message, args) => {
-        message.channel.send(':crown: All hail King Henrik Abel! :crown:');
+        await message.channel.send(':crown: All hail King Henrik Abel! :crown:');
     }
 }
