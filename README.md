@@ -2,6 +2,14 @@
 
 Discord bot
 
+## Setup
+
+Copy `.env.sample` to `.env` and update accordingly.
+
+```sh
+cp .env.sample .env
+```
+
 ## Permissions required
 
 * Change Nickname
