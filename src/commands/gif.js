@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
 import querystring from 'querystring';
 
+import { NOT_FOUND, TOO_MANY_REQUESTS } from '../utils/status-codes';
+
 export default {
     name: 'gif',
     description: 'gets a random gif based on <search term>',
@@ -22,12 +24,12 @@ export default {
             const res = await fetch(`https://api.giphy.com/v1/gifs/search?${qstr}`);
             const json = await res.json();
 
-            if (json.meta.status === 429) {
+            if (json.meta.status === TOO_MANY_REQUESTS) {
                 await message.reply('I need a break - try again later');
                 return;
             }
 
-            if (json.meta.status === 404 || json.data.length < 1) {
+            if (json.meta.status === NOT_FOUND || json.data.length < 1) {
                 await message.reply('I was not able to find a gif that matches your search term');
                 return;
             } 
