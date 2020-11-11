@@ -35,6 +35,7 @@ export default {
             } 
 
             const randomIndex = Math.floor(Math.random() * Math.floor(json.data.length)); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+            await message.delete();
             await message.channel.send(json.data[randomIndex].url);
         } catch (error) {
             await message.reply('I ran into some issues - please try again later');
