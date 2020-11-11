@@ -12,6 +12,8 @@ cp .env.sample .env
 
 ## Permissions required
 
+* Send Messages
+* Manage Messages
 * Change Nickname
 * Manage Nickname
 
